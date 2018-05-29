@@ -1,0 +1,31 @@
+version: '3'
+services:
+  selenoid:
+    build:
+      context: .
+      dockerfile: Dockerfile-selenoid
+    container_name: "selenoid"
+    network_mode: bridge
+    volumes:
+      - ./var/run/docker.sock:/var/docker.sock
+      - ./video/:/opt/selenoid/video/
+      - ./selenoid/:/etc/selenoid
+    environment:
+      - OVERRIDE_VIDEO_OUTPUT_DIR=./video/
+      - TZ=Europe/Moscow
+    ports:
+      - "4444:4444"
+    command: ["-conf","/etc/selenoid/browsers.json","-video-output-dir", "/opt/selenoid/video"]
+  selenoid-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile-selenoid-ui
+    container_name: "selenoid-ui"
+    network_mode: bridge
+    environment:
+      - TZ=Europe/Moscow
+    links:
+      - selenoid
+    ports:
+      - "8081:8080"
+    command: ["--selenoid-uri","http://selenoid:4444"]

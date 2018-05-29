@@ -1,0 +1,17 @@
+version: '3'
+services:
+  jenkins-blueocean:
+    container_name: "jenkins-blueocean"
+    user: root
+    build: .
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+      - ./var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    environment: 
+      - TZ=Europe/Moscow
+      - JENKINS_HOST_HOME:"/jenkins_home/jenkins"
+      - JAVA_OPTS:"-Djava.util.logging.config.file=/var/jenkins_home/log.properties"
+    ports: 
+      - "50000:50000"
+      - "8080:8080"
