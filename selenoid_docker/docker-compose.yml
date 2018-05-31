@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile-selenoid
     container_name: "selenoid"
     network_mode: bridge
+    restart: always
     volumes:
       - ./var/run/docker.sock:/var/docker.sock
       - ./video/:/opt/selenoid/video/
@@ -22,6 +23,7 @@ services:
       dockerfile: Dockerfile-selenoid-ui
     container_name: "selenoid-ui"
     network_mode: bridge
+    restart: always
     environment:
       - TZ=Europe/Moscow
     links:
