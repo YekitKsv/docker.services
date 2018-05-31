@@ -10,7 +10,7 @@ services:
     volumes:
       - ./var/run/docker.sock:/var/docker.sock
       - ./video/:/opt/selenoid/video/
-      - ./selenoid/:/etc/selenoid
+      - ./selenoid/:/etc/selenoid:ro
     environment:
       - OVERRIDE_VIDEO_OUTPUT_DIR=./video/
       - TZ=Europe/Moscow
