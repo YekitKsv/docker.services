@@ -16,7 +16,7 @@ services:
       - TZ=Europe/Moscow
     ports:
       - "4444:4444"
-    command: ["-conf","/etc/selenoid/browsers.json","-video-output-dir", "/opt/selenoid/video"]
+    command: ["-limit","4","-conf","/etc/selenoid/browsers.json","-video-output-dir", "/opt/selenoid/video"]
   selenoid-ui:
     build:
       context: .
