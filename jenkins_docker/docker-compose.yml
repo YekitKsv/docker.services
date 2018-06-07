@@ -1,7 +1,7 @@
 version: '3'
 services:
-  jenkins-blueocean:
-    container_name: "jenkins-blueocean"
+  jenkins:
+    container_name: "jenkins"
     user: root
     build: .
     volumes:

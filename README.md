@@ -1,6 +1,6 @@
 # Docker service
 ### Для запуска jenkins ввести команду:
-<pre>cd jenkins_docker && docker-compose up -d</pre>
+<pre>cd jenkins_docker && sudo docker-compose up -d</pre>
 Запустится jenkins на 8080 порту.
 <br>
 ### Для запуска сервисов selenoid ввести команду:
